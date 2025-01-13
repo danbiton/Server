@@ -11,7 +11,8 @@ const {
   associateEmployeeWithIssue,
   allIssuesByProfession,
   deleteAndCreateIssue,
-  sendMailToManager
+  // unassociateEmployeeFromIssue
+ 
 } = queries;
 
 const { getAllHistories, getHistoryById } = queriesHistory;
@@ -20,11 +21,12 @@ router.post("/addIssues", upload.array("issue_images", 12), addIssues);
 router.get("/getallissues", getAllIssues);
 router.get("/autocomplete", autocompleteIssue);
 router.put("/updateissue", associateEmployeeWithIssue);
+// router.post("/unassociateemployeefromissue",unassociateEmployeeFromIssue)
 router.put("/update/:id", updateIssue);
 router.get("/allissuesbyprofession/:id", allIssuesByProfession);
 router.post("/deleteissue/:id", deleteAndCreateIssue);
 
-router.get("/sendmailtoManager/:id",sendMailToManager)
+
 
 //issuesHistory
 router.get("/getallhistories", getAllHistories);
