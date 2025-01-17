@@ -140,45 +140,7 @@ export default {
     }
   },
 
-
-
-
-      
-
-
-  //Client
-  associateEmployeeWithIssue: async (req, res) => {
-    try {
-      const { employees, issues } = req.body;
-      console.log(employees, issues);
-      const employeeUpdated = await issueModel.findByIdAndUpdate(
-        issues,
-        { employees },
-        {
-          new: true,
-        }
-      );
-
-      const issueUpdated = await employeeModel.updateOne(
-        { _id: employees },
-        { $addToSet: { issues } }
-      );
-
-      res.status(200).json({
-        success: true,
-        message: true,
-        data: issueUpdated,
-        data2: employeeUpdated,
-      });
-    } catch (error) {
-      res.status(500).json({
-        success: false,
-        message: false,
-        error: error || error.message,
-      });
-    }
-  },
-  updateIssue: async (req, res) => {
+ updateIssue: async (req, res) => {
     try {
       const { id } = req.params;
       const issue = req.body;
@@ -392,6 +354,45 @@ export default {
       });
     }
   },
+
+
+
+      
+
+
+  //Client
+  associateEmployeeWithIssue: async (req, res) => {
+    try {
+      const { employees, issues } = req.body;
+      console.log(employees, issues);
+      const employeeUpdated = await issueModel.findByIdAndUpdate(
+        issues,
+        { employees },
+        {
+          new: true,
+        }
+      );
+
+      const issueUpdated = await employeeModel.updateOne(
+        { _id: employees },
+        { $addToSet: { issues } }
+      );
+
+      res.status(200).json({
+        success: true,
+        message: true,
+        data: issueUpdated,
+        data2: employeeUpdated,
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: false,
+        error: error || error.message,
+      });
+    }
+  },
+ 
 
   // unassociateEmployeeFromIssue: async (req, res) => {
   //   try {
