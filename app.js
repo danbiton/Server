@@ -9,6 +9,7 @@ import {
   OAuth2Client
 } from 'google-auth-library';
 import jwt from "jsonwebtoken"
+import employeeModel from "./models/employee.model.js";
 
 cron.schedule("1 3 * * *", () => {
   console.log("running a task every minute");
@@ -43,23 +44,36 @@ const oAuth2Client = new OAuth2Client(
       idToken: tokens.id_token,
       audience: process.env.GOOGLE_CLIENT_ID,
     });
+    console.log(tokens)
+    console.log(ticket.getPayload())
+    
      // if user exist on the database, send the tokens back to the client
     // Save the user data to the database
+    const existingEmployee = await employeeModel.findOne({employeeEmail: ticket.getPayload().email })
 
-    const user = {
-      employeeEmail: ticket.getPayload().email,
-      employeeName: ticket.getPayload().name,
-      verify:true
-  }
-     // send the tokens back to the client
-    console.log(ticket);
-    console.log("token",tokens.id_token);
-     const token = jwt.sign({token:tokens.id_token}, process.env.JWT_SECRET, { expiresIn: "1d" });
-    res.cookie("token", token, { httpOnly: true , secure: true, sameSite: "none"});
-    
-    res.json(token);
-      
+  
+  
+   if (existingEmployee) {
+   
+    console.log('User logged in successfully');
+    const token = jwt.sign({ token: tokens.id_token }, process.env.JWT_SECRET, { expiresIn: "1d" });
+    res.cookie("token", token, { httpOnly: true, secure: true, sameSite: "none" });
+    res.status(200).json({
+      success: true,
+      message: true,
+      data: existingEmployee,
     });
+  } else {
+   
+    res.status(401).json({
+      success: false,
+      message: 'Invalid email',
+      error: error || error.message
+     });
+  }
+
+   })
+
     
 app.use(cookieParser());
 app.use("/users", usersRouter);
