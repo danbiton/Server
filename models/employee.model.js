@@ -34,8 +34,14 @@ const employeeSchema = new Schema(
   { timestamps: true }
 );
 
+// employeeSchema.pre("save", async function (next) {
+//   this.employeePassword = await hash(this.employeePassword, 10);
+//   next();
+// });
 employeeSchema.pre("save", async function (next) {
-  this.employeePassword = await hash(this.employeePassword, 10);
+  if (this.isModified("employeePassword")) {  
+    this.employeePassword = await hash(this.employeePassword, 10);
+  }
   next();
 });
 

@@ -52,12 +52,15 @@ const oAuth2Client = new OAuth2Client(
     const existingEmployee = await employeeModel.findOne({employeeEmail: ticket.getPayload().email })
 
   
-  
    if (existingEmployee) {
    
     console.log('User logged in successfully');
     const token = jwt.sign({ token: tokens.id_token }, process.env.JWT_SECRET, { expiresIn: "1d" });
-    res.cookie("token", token, { httpOnly: true, secure: true, sameSite: "none" });
+    res.cookie("token", token,{ 
+         httpOnly: true,
+         secure: true,
+         sameSite: "none" });
+
     res.status(200).json({
       success: true,
       message: true,
