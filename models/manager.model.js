@@ -25,9 +25,12 @@ const managerSchema = new Schema(
   },
   { timestamps: true }
 );
-managerSchema.pre("save", async function (next) {
-  this.manager_password = await hash(this.manager_password, 10);
-  next();
+
+   managerSchema.pre("save", async function (next) {
+     if (this.isModified("manager_password")) {  
+       this.manager_password = await hash(this.manager_password, 10);
+  }
+    next();
 });
 
 export default model("managers", managerSchema);
