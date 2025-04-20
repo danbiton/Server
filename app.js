@@ -29,7 +29,11 @@ app.use(
   cors({
     credentials: true,
     optionsSuccessStatus: 200,
-    origin: ["http://localhost:5173", "http://localhost:5174"],
+    origin: ["http://localhost:5173",
+       "http://localhost:5174",
+      "https://client-ny8b.onrender.com",
+      "https://construction-admin-uiod.onrender.com"
+    ],
   })
 );
 const oAuth2Client = new OAuth2Client(
@@ -76,6 +80,7 @@ const oAuth2Client = new OAuth2Client(
   }
 
    })
+  app.get("/test", (req, res) => res.send("OK!"))
 
     
 app.use(cookieParser());
@@ -84,5 +89,5 @@ app.use("/issues", issuesRouter);
 app.use("/professions", professionsRouter);
 app.use("/general", generalRouter);
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`server is running on port ${port}`));
