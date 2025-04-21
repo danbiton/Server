@@ -29,8 +29,12 @@ app.use(
   cors({
     credentials: true,
     optionsSuccessStatus: 200,
-    origin: ["*"
-    ],
+
+    origin: ["http://localhost:5173",
+       "http://localhost:5174",
+      " https://construction-admin-rouge.vercel.app",
+      "https://construction-admin-uiod.onrender.com"
+
   })
 );
 const oAuth2Client = new OAuth2Client(
