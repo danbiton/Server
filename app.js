@@ -32,8 +32,9 @@ app.use(
 
     origin: ["http://localhost:5173",
        "http://localhost:5174",
-      " https://construction-admin-rouge.vercel.app",
-      "https://construction-admin-uiod.onrender.com"
+      "https://construction-admin-rouge.vercel.app",
+      "https://construction-client-nine.vercel.app",
+      "https://construct-client.onrender.com"
     ]
   })
 );
@@ -63,8 +64,11 @@ const oAuth2Client = new OAuth2Client(
     const token = jwt.sign({ token: tokens.id_token }, process.env.JWT_SECRET, { expiresIn: "1d" });
     res.cookie("token", token,{ 
          httpOnly: true,
-         secure: true,
-         sameSite: "None" });
+         secure:true,
+         sameSite: "None",
+         maxAge: 1000 * 60 * 60 * 24, 
+    });
+
 
     res.status(200).json({
       success: true,
