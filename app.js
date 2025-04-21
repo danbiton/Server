@@ -64,7 +64,7 @@ const oAuth2Client = new OAuth2Client(
     res.cookie("token", token,{ 
          httpOnly: true,
          secure: true,
-         sameSite: "none" });
+         sameSite: "None" });
 
     res.status(200).json({
       success: true,
