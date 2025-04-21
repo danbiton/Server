@@ -31,7 +31,7 @@ app.use(
     optionsSuccessStatus: 200,
     origin: ["http://localhost:5173",
        "http://localhost:5174",
-      "https://client-ny8b.onrender.com",
+      " https://construction-admin-rouge.vercel.app",
       "https://construction-admin-uiod.onrender.com"
     ],
   })
