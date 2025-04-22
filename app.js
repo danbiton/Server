@@ -34,7 +34,8 @@ app.use(
        "http://localhost:5174",
       "https://construction-admin-rouge.vercel.app",
       "https://construction-client-nine.vercel.app",
-      "https://construct-client.onrender.com"
+      "https://construct-client.onrender.com",
+      "https://construction-admin-uiod.onrender.com"
     ]
   })
 );
