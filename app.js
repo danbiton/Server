@@ -32,9 +32,7 @@ app.use(
 
     origin: ["http://localhost:5173",
        "http://localhost:5174",
-
-       "https://construction-client-ten.vercel.app/"
-
+       "https://construction-client-ten.vercel.app"
     ]
   })
 );
