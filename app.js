@@ -37,7 +37,7 @@ app.use(
 "https://admin-git-main-danbitons-projects.vercel.app",
 "https://admin-f4cg9oddu-danbitons-projects.vercel.app",
 "https://construction-client-git-main-danbitons-projects.vercel.app",
-"https://construction-client-cydf80gov-danbitons-projects.vercel.app",
+"https://construction-client-qv6n4tx33-danbitons-projects.vercel.app",
     ]
   })
 );
