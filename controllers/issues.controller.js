@@ -140,7 +140,7 @@ export default {
     }
   },
 
- updateIssue: async (req, res) => {
+  updateIssue: async (req, res) => {
     try {
       const { id } = req.params;
       const issue = req.body;
@@ -239,7 +239,7 @@ export default {
 
         await transporter.sendMail({
           from: issueUpdated.employees.employeeEmail,
-          to: "dcsn706@gmail.com",
+          to: "biton123654@gmail.com",
           subject: `Issue number ${issueUpdated._id} is awaiting your approval`,
           html: emailTemplate,
         });
@@ -355,11 +355,6 @@ export default {
     }
   },
 
-
-
-      
-
-
   //Client
   associateEmployeeWithIssue: async (req, res) => {
     try {
@@ -392,7 +387,6 @@ export default {
       });
     }
   },
- 
 
   // unassociateEmployeeFromIssue: async (req, res) => {
   //   try {
