@@ -39,10 +39,7 @@ app.use(
     ]
   })
 );
-app.get("/test", (req, res) => {
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.send("OK!");
-});
+
 
 const oAuth2Client = new OAuth2Client(
   process.env.GOOGLE_CLIENT_ID,
