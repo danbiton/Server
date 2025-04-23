@@ -35,7 +35,9 @@ app.use(
        "https://construction-client-ten.vercel.app",
        "https://admin-xi-ten-50.vercel.app",
 "https://admin-git-main-danbitons-projects.vercel.app",
-"https://admin-f4cg9oddu-danbitons-projects.vercel.app"
+"https://admin-f4cg9oddu-danbitons-projects.vercel.app",
+"https://construction-client-git-main-danbitons-projects.vercel.app",
+"https://construction-client-cydf80gov-danbitons-projects.vercel.app"
     ]
   })
 );
